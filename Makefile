@@ -1,13 +1,13 @@
-all: build run
+all: build
 
 build:
 	git submodule init
 	git submodule update --remote
 	latexmk -xelatex -synctex=1 -jobname=master-thesis main.tex
 
-run:
-	# Я использую macOS
-	open master-thesis.pdf &
+# run:
+# 	# Я использую macOS
+# 	vscodium master-thesis.pdf &
 
 clean:
 	rm *.aux \

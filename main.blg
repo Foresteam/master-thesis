@@ -1,0 +1,5 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is '/home/foresteam/nextcloud/ÑÐºÐ¸Ð»Ð°/14ÐºÐ»Ð°ÑÑ_v2/practics/ohhfuck/main.blg'
+[49] biber:340> INFO - === Thu Dec 19, 2024, 23:30:30
+[88] Utils.pm:410> ERROR - Cannot find '/home/foresteam/nextcloud/ÑÐºÐ¸Ð»Ð°/14ÐºÐ»Ð°ÑÑ_v2/practics/ohhfuck/main.bcf'!
+[88] Biber.pm:136> INFO - ERRORS: 1
