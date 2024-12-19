@@ -83,15 +83,16 @@
 
 % Списки
 \usepackage{enumitem}
-\setlist[enumerate,itemize]{leftmargin=12.7mm} % Отступы в списках
+% \setlist[enumerate,itemize]{leftmargin=\parindent} % Отступы в списках
+\setlist[enumerate,itemize]{leftmargin=0pt, itemindent=2.5cm, labelsep=0.9cm} % Отступы в списках, как этого у нас хотят
 
 \makeatletter
-    \AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
+    \AddEnumerateCounter{\arabic}{\@arabic}{м.}
 \makeatother
 \setlist{nolistsep}                           % Нет отступов между пунктами списка
 \renewcommand{\labelitemi}{--}                % Маркер списка --
-\renewcommand{\labelenumi}{\asbuk{enumi})}    % Список второго уровня
-\renewcommand{\labelenumii}{\arabic{enumii})} % Список третьего уровня
+\renewcommand{\labelenumi}{\arabic{enumi}.}    % Список второго уровня
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.} % Список третьего уровня
 
 % Содержание
 \usepackage{tocloft}
@@ -186,6 +187,12 @@
     \paragraph{\centerline{{#1}}\vspace{1em}}
     \addcontentsline{toc}{section}{#1}
 }
+% Секции без номеров (введение, заключение...), вместо section*{}
+\newcommand{\anonsubsection}[1]{
+    \phantomsection % Корректный переход по ссылкам в содержании
+    \textnormal{#1}
+    \addcontentsline{toc}{subsection}{#1}
+}
 
 % Секция для аннотации (она не включается в содержание)
 \newcommand{\annotation}[1]{
@@ -232,3 +239,20 @@
 
 \usepackage{lastpage} % Подсчет количества страниц
 \setcounter{page}{3}  % Начало нумерации страниц
+
+% Названия ссылок рисунков
+\addto\extrasrussian{
+  \renewcommand{\figureautorefname}{Рисунок}
+}
+\renewcommand{\figureautorefname}{Рисунок}
+% Названия ссылок листингов
+\providecommand*{\lstlistingautorefname}{Листинг}
+
+\newcommand{\addmyimage}[3]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{#1}
+		\caption{#3}
+		\label{#2}
+	\end{figure}
+}
