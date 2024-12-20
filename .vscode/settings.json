@@ -1,5 +1,6 @@
 {
   "cSpell.language": "en,ru",
+  "editor.wordWrap": "on",
   "latex-workshop.latex.recipes": [
     {
       "name": "pdflatex",
