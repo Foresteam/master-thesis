@@ -1,0 +1,9 @@
+export const salt = new Uint8Array([
+  ...
+]);
+export const key = new Uint8Array([
+  ...
+]);
+export const iv = new Uint8Array([
+  ...
+]);

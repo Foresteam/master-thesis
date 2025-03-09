@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.2.0)
+project(rut VERSION 0.1.0)
+
+add_subdirectory(lua)
+
+include(CTest)
+enable_testing()
+
+add_library(rut SHARED
+	src/Timer.h
+	src/Primes.h
+	src/Timer.cpp
+	src/Primes.cpp
+	src/main.cpp
+)
+
+target_include_directories(rut
+	PUBLIC lua/lua-5.4.4/include
+)
+
+target_link_libraries(rut
+	foresteamnd
+	lua_static
+	${PLATFORM_LIBS}
+)
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
