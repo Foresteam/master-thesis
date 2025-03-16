@@ -5,6 +5,7 @@
 \usepackage{xltxtra}  % Верхние и нижние индексы
 \usepackage{pdfpages} % Вставка PDF
 
+\usepackage{xcolor}
 \usepackage{listings} % Оформление исходного кода
 \lstset{
     basicstyle=\small\ttfamily, % Размер и тип шрифта
@@ -13,6 +14,21 @@
     frame=single,               % Рамка
     literate={--}{{-{}-}}2,     % Корректно отображать двойной дефис
     literate={---}{{-{}-{}-}}3  % Корректно отображать тройной дефис
+}
+\definecolor{darkgreen}{rgb}{0,0.5,0} % Custom dark green color
+\lstdefinelanguage{TypeScript}{
+    keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, for, of, while, do, else, case, break, const, let, import, export, default, class, extends, async, await, from, interface },
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={class, export, boolean, number, string, object, throw, implements, import, this, from, interface },
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    commentstyle=\color{darkgreen}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]', 
+    morestring=[b]"
 }
 
 % Шрифты, xelatex
@@ -213,11 +229,27 @@
     \addcontentsline{toc}{section}{\listtablename}
 }
 
-% Секции для приложений
+% Создание новой нумерации для appsection (буквы A, B, C...)
+\newcounter{appsection}[subsection] % Счетчик appsection зависит от subsection
+\renewcommand{\theappsection}{\Alph{appsection}} % Буквенная нумерация
+
+% Форматирование для appsection
+\titleformat{\appsection}[block]{\vspace{1em}\normalsize}{}{12.5mm}{\theappsection\quad#1\vspace{1em}}
+
+% Команда для appsection
 \newcommand{\appsection}[1]{
-    \phantomsection
-    \paragraph{\centerline{{#1}}}
-    \addcontentsline{toc}{section}{{#1}}
+    \refstepcounter{appsection} % Увеличиваем счетчик
+    \phantomsection % Корректный переход по ссылкам в содержании
+    \addcontentsline{toc}{subsection}{\theappsection\quad#1} % Добавляем в содержание
+    \appsectionformat{#1} % Применяем форматирование
+}
+
+% Форматирование appsection
+\newcommand{\appsectionformat}[1]{
+    \vspace{1em}
+    \normalsize
+    \theappsection\quad#1
+    \vspace{1em}
 }
 
 % Библиография: отступы и межстрочный интервал
