@@ -18,17 +18,37 @@
 \definecolor{darkgreen}{rgb}{0,0.5,0} % Custom dark green color
 \lstdefinelanguage{TypeScript}{
     keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, for, of, while, do, else, case, break, const, let, import, export, default, class, extends, async, await, from, interface },
-    keywordstyle=\color{blue}\bfseries,
     ndkeywords={class, export, boolean, number, string, object, throw, implements, import, this, from, interface },
-    ndkeywordstyle=\color{darkgray}\bfseries,
-    identifierstyle=\color{black},
     sensitive=false,
     comment=[l]{//},
     morecomment=[s]{/*}{*/},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywordstyle=\color{darkgray}\bfseries,
     commentstyle=\color{darkgreen}\ttfamily,
     stringstyle=\color{red}\ttfamily,
     morestring=[b]', 
     morestring=[b]"
+}
+% Define Vue.js language
+\lstdefinelanguage{Vue}{
+		keywords={import, export, default, from, interface },
+    morekeywords={template,script,data,methods,computed,props,watch,mounted,created,updated,destroyed,setup,ref,reactive},
+		ndkeywords={ export, boolean, import, this, from, interface },
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morecomment=[s]{<!--}{-->},
+    morestring=[b]",
+    morestring=[b]',
+    morestring=[b]`,
+		keywordstyle=\color{blue}\bfseries,
+    ndkeywordstyle=\color{darkgray}\bfseries,
+		commentstyle=\color{darkgreen}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    tabsize=2,
+    frame=single,
+    showstringspaces=false,
+    breaklines=true
 }
 
 % Шрифты, xelatex
